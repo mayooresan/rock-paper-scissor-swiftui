@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Rock - Paper - Scissor")
+                .font(Font.custom("Silkscreen-Bold.ttf", size: 24))
         }
         .padding()
     }

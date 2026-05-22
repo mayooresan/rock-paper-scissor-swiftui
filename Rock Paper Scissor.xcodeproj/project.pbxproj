@@ -397,6 +397,7 @@
 				CURRENT_PROJECT_VERSION = 20;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rock-Paper-Scissor-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Rock Paper Scissor";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -430,6 +431,7 @@
 				CURRENT_PROJECT_VERSION = 20;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rock-Paper-Scissor-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Rock Paper Scissor";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
