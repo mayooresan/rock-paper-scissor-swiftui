@@ -7,12 +7,27 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct RetroButtonView: View {
+    let title: String
+    let action: () -> Void
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action) {
+                    Text(title)
+                        .font(.custom("Silkscreen-Regular", size: 20))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 15)
+                        .frame(width: 250, height: 50)
+                        .background(
+                            Capsule()
+                                .stroke(Color.black, lineWidth: 1)
+                                .background(Capsule().fill(Color.white)))
+        }
     }
 }
 
 #Preview {
-    SwiftUIView()
+    RetroButtonView(title: "hello world") {
+        print("clicked")
+    }
 }
