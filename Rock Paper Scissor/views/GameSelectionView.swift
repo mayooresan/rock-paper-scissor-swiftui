@@ -11,6 +11,7 @@ struct GameSelectionView: View {
     // This binding controls GameSelectionView's presentation from ContentView
     @Binding var showGameSelection: Bool
     @State private var showResultModal = false
+    @State private var selectedItem: String = ""
     
     var body: some View {
         VStack {
