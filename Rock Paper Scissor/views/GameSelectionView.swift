@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameSelectionView: View {
+    // This binding controls GameSelectionView's presentation from ContentView
+    @Binding var showGameSelection: Bool
     @State private var showResultModal = false
     
     var body: some View {
@@ -31,12 +33,14 @@ struct GameSelectionView: View {
         }
         .padding(16)
         .sheet(isPresented: $showResultModal) {
-            ResultView()
+            // Pass both the result modal binding and the game selection binding to ResultView
+            ResultView(showResultModal: $showResultModal, showGameSelection: $showGameSelection)
         }
         Spacer()
     }
 }
 
 #Preview {
-    GameSelectionView()
+    // For preview, provide a constant binding
+    GameSelectionView(showGameSelection: .constant(true))
 }

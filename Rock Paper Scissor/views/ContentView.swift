@@ -33,7 +33,8 @@ struct ContentView: View {
             }
             .padding(16)
             .navigationDestination(isPresented: $showGameSelection) {
-                GameSelectionView()
+                // Pass the binding down to GameSelectionView
+                GameSelectionView(showGameSelection: $showGameSelection)
             }
         }
     }

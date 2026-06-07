@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ResultView: View {
-    @Environment(\.dismiss) private var dismiss
+    // This is for dismissing ResultView itself (the sheet)
+    @Binding var showResultModal: Bool
+    // This is for dismissing GameSelectionView and going back to ContentView
+    @Binding var showGameSelection: Bool
 
     var body: some View {
         Text("You won").font(.custom("Silkscreen-Bold", size: 30))
@@ -43,13 +46,17 @@ struct ResultView: View {
         
         VStack {
             RetroButtonView(title: "play gain") {
-                dismiss()
+                // Dismiss only the ResultView sheet
+                showResultModal = false
             }
             .padding(.top, 32)
         }
         
         RetroButtonView(title: "back to home") {
-            dismiss()
+            // Dismiss the ResultView sheet
+            showResultModal = false
+            // Pop GameSelectionView from the NavigationStack, returning to ContentView
+            showGameSelection = false
         }
         .padding(.top, 16)
         
@@ -58,5 +65,6 @@ struct ResultView: View {
 }
 
 #Preview {
-    ResultView()
+    // For preview, provide constant bindings
+    ResultView(showResultModal: .constant(true), showGameSelection: .constant(true))
 }
