@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showGameSelection = false
+    
     var body: some View {
-        VStack {
-            Image("logo").resizable().frame(width: 200, height: 200).aspectRatio(contentMode: .fit)
+        NavigationStack {
+            VStack {
+                Image("logo").resizable().frame(width: 200, height: 200).aspectRatio(contentMode: .fit)
 
-            
-            Text("Rock - Paper Scissor")
-                .font(.custom("Silkscreen-Bold", size: 24))
-                .multilineTextAlignment(.center)
+                
+                Text("Rock - Paper Scissor")
+                    .font(.custom("Silkscreen-Bold", size: 24))
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 32)
+                
+                RetroButtonView(title: "new game") {
+                    showGameSelection = true
+                }
                 .padding(.top, 32)
-            
-            RetroButtonView(title: "new game") {
                 
+                RetroButtonView(title: "bot vs bot") {
+                    
+                }
+                .padding(.top, 16)
             }
-            .padding(.top, 32)
-            
-            RetroButtonView(title: "bot vs bot") {
-                
+            .padding(16)
+            .navigationDestination(isPresented: $showGameSelection) {
+                GameSelectionView()
             }
-            .padding(.top, 16)
         }
-        .padding(16)
     }
 }
 

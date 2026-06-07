@@ -17,10 +17,11 @@ struct RetroButtonView: View {
                         .foregroundColor(.black)
                         .padding(.horizontal, 40)
                         .padding(.vertical, 15)
-                        .frame(width: 250, height: 50)
+
                         .background(
                             Capsule()
                                 .stroke(Color.black, lineWidth: 1)
+                                .frame(width: 250, height: 50)
                                 .background(Capsule().fill(Color.white)))
         }
     }
