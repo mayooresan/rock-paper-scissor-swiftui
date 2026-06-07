@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ResultView: View {
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         Text("You won").font(.custom("Silkscreen-Bold", size: 30))
             .padding(.top, 88)
@@ -41,13 +43,13 @@ struct ResultView: View {
         
         VStack {
             RetroButtonView(title: "play gain") {
-                
+                dismiss()
             }
             .padding(.top, 32)
         }
         
         RetroButtonView(title: "back to home") {
-            
+            dismiss()
         }
         .padding(.top, 16)
         

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameSelectionView: View {
+    @State private var showResultModal = false
+    
     var body: some View {
         VStack {
             Text("MAKE YOUR SELECTION")
@@ -16,17 +18,21 @@ struct GameSelectionView: View {
                 .padding(.top, 40)
             
             GameChoiceButton(title: "Rock", imageName: "rock") {
-                
+                showResultModal = true
             }.padding(.top, 24)
             
             GameChoiceButton(title: "Paper", imageName: "paper") {
-                
+                showResultModal = true
             }.padding(.top, 24)
             
             GameChoiceButton(title: "Scissor", imageName: "scissor") {
-                
+                showResultModal = true
             }.padding(.top, 24)
-        }.padding(16)
+        }
+        .padding(16)
+        .sheet(isPresented: $showResultModal) {
+            ResultView()
+        }
         Spacer()
     }
 }
