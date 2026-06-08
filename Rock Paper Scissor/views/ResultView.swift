@@ -12,6 +12,7 @@ struct ResultView: View {
     @Binding var showResultModal: Bool
     // This is for dismissing GameSelectionView and going back to ContentView
     @Binding var showGameSelection: Bool
+    @Binding var gameViewModel: GameViewModel
 
     var body: some View {
         Text("You won").font(.custom("Silkscreen-Bold", size: 30))
@@ -20,7 +21,7 @@ struct ResultView: View {
         HStack {
             VStack {
                 Text("You").font(.custom("Silkscreen-Bold", size: 24))
-                Image("rock")
+                Image(gameViewModel.playerMove?.assetName ?? "paper")
                     .resizable()
                     .frame(width: 60, height: 70)
             }.padding(.leading, 78)
@@ -66,5 +67,5 @@ struct ResultView: View {
 
 #Preview {
     // For preview, provide constant bindings
-    ResultView(showResultModal: .constant(true), showGameSelection: .constant(true))
+    ResultView(showResultModal: .constant(true), showGameSelection: .constant(true), gameViewModel: .constant(GameViewModel()))
 }
