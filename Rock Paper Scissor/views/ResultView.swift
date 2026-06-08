@@ -15,7 +15,7 @@ struct ResultView: View {
     @Binding var gameViewModel: GameViewModel
 
     var body: some View {
-        Text("You won").font(.custom("Silkscreen-Bold", size: 30))
+        Text(gameViewModel.gameResult?.rawValue ?? "no value").font(.custom("Silkscreen-Bold", size: 30))
             .padding(.top, 88)
         
         HStack {
@@ -38,7 +38,7 @@ struct ResultView: View {
             
             VStack {
                 Text("BOT").font(.custom("Silkscreen-Bold", size: 24))
-                Image("scissor")
+                Image(gameViewModel.botMove?.assetName ?? "scissor")
                     .resizable()
                     .frame(width: 60, height: 70)
             }.padding(.trailing, 78)
@@ -46,7 +46,7 @@ struct ResultView: View {
         .padding(.top, 84)
         
         VStack {
-            RetroButtonView(title: "play gain") {
+            RetroButtonView(title: "play again") {
                 // Dismiss only the ResultView sheet
                 showResultModal = false
             }

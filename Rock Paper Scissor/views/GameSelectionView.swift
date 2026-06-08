@@ -21,23 +21,27 @@ struct GameSelectionView: View {
                 .padding(.top, 40)
             
             GameChoiceButton(title: "Rock", imageName: "rock") {
-                showResultModal = true
-                gameViewModel.playerMove = .rock
+                gameViewModel.playerMove = .rock // Set player's move
+                gameViewModel.playRound(userSelection: gameViewModel.playerMove!) // Play the round immediately
+                showResultModal = true // Then show the modal
             }.padding(.top, 24)
             
             GameChoiceButton(title: "Paper", imageName: "paper") {
-                showResultModal = true
                 gameViewModel.playerMove = .paper
+                gameViewModel.playRound(userSelection: gameViewModel.playerMove!)
+                showResultModal = true
             }.padding(.top, 24)
             
             GameChoiceButton(title: "Scissors", imageName: "scissor") {
-                showResultModal = true
                 gameViewModel.playerMove = .scissors
+                gameViewModel.playRound(userSelection: gameViewModel.playerMove!)
+                showResultModal = true
             }.padding(.top, 24)
         }
         .padding(16)
         .sheet(isPresented: $showResultModal) {
-            // Pass both the result modal binding and the game selection binding to ResultView
+            // Now, only ResultView is in the sheet's content, which is a View.
+            // The game logic has already been executed.
             ResultView(showResultModal: $showResultModal, showGameSelection: $showGameSelection, gameViewModel: $gameViewModel)
         }
         Spacer()
@@ -48,3 +52,4 @@ struct GameSelectionView: View {
     // For preview, provide a constant binding
     GameSelectionView(showGameSelection: .constant(true))
 }
+
