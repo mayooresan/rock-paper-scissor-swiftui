@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showGameSelection = false
+    @State private var showStatsView = false
+    @State private var statsViewModel = StatsViewModel() // ContentView now owns the StatsViewModel
     
     var body: some View {
         NavigationStack {
@@ -26,15 +28,19 @@ struct ContentView: View {
                 }
                 .padding(.top, 32)
                 
-                RetroButtonView(title: "bot vs bot") {
-                    
+                RetroButtonView(title: "Stats") {
+                    showStatsView = true
                 }
                 .padding(.top, 16)
             }
             .padding(16)
             .navigationDestination(isPresented: $showGameSelection) {
-                // Pass the binding down to GameSelectionView
-                GameSelectionView(showGameSelection: $showGameSelection)
+                // Pass the shared statsViewModel to GameSelectionView
+                GameSelectionView(showGameSelection: $showGameSelection, statsViewModel: statsViewModel)
+            }
+            .navigationDestination(isPresented: $showStatsView) {
+                // Pass the shared statsViewModel to StatsView
+                StatsView(statsViewModel: statsViewModel)
             }
         }
     }

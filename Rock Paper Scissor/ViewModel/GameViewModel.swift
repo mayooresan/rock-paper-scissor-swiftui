@@ -12,11 +12,16 @@ class GameViewModel {
     var playerMove: Game?
     var botMove: Game?
     var gameResult: GameResult?
+    var stats: StatsViewModel
     
     func playRound(userSelection: Game) {
         playerMove = userSelection
         botMove = Game.allCases.randomElement()
         determineWinner()
+    }
+    
+    init(statsViewModel: StatsViewModel) {
+        self.stats = statsViewModel
     }
     
     private func determineWinner() {
@@ -28,8 +33,10 @@ class GameViewModel {
                       (pMove == .paper && bMove == .rock) ||
                       (pMove == .scissors && bMove == .paper) {
                 gameResult = .win
+                stats.recordWin()
             } else {
                 gameResult = .lose
+                stats.recordLoss()
             }
         }
 }

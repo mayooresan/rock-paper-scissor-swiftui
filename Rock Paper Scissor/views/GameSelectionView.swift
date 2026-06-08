@@ -11,7 +11,16 @@ struct GameSelectionView: View {
     // This binding controls GameSelectionView's presentation from ContentView
     @Binding var showGameSelection: Bool
     @State private var showResultModal = false
-    @State var gameViewModel: GameViewModel = GameViewModel()
+    // Remove the @State for statsViewModel here, as it's now passed in
+    var statsViewModel: StatsViewModel // Now a regular var, passed from ContentView
+    @State private var gameViewModel: GameViewModel
+    
+    init(showGameSelection: Binding<Bool>, statsViewModel: StatsViewModel) {
+            _showGameSelection = showGameSelection // Initialize the binding
+            self.statsViewModel = statsViewModel // Assign the passed-in statsViewModel
+            // Initialize the GameViewModel with the *shared* StatsViewModel
+            _gameViewModel = State(initialValue: GameViewModel(statsViewModel: statsViewModel))
+        }
     
     var body: some View {
         VStack {
@@ -49,7 +58,6 @@ struct GameSelectionView: View {
 }
 
 #Preview {
-    // For preview, provide a constant binding
-    GameSelectionView(showGameSelection: .constant(true))
+    // For preview, provide a constant binding and an instance of StatsViewModel
+    GameSelectionView(showGameSelection: .constant(true), statsViewModel: StatsViewModel())
 }
-

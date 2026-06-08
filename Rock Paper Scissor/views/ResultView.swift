@@ -18,6 +18,8 @@ struct ResultView: View {
         Text(gameViewModel.gameResult?.rawValue ?? "no value").font(.custom("Silkscreen-Bold", size: 30))
             .padding(.top, 88)
         
+        Text(String(gameViewModel.stats.playerWins))
+        
         HStack {
             VStack {
                 Text("You").font(.custom("Silkscreen-Bold", size: 24))
@@ -67,5 +69,5 @@ struct ResultView: View {
 
 #Preview {
     // For preview, provide constant bindings
-    ResultView(showResultModal: .constant(true), showGameSelection: .constant(true), gameViewModel: .constant(GameViewModel()))
+    ResultView(showResultModal: .constant(true), showGameSelection: .constant(true), gameViewModel: .constant(GameViewModel(statsViewModel: StatsViewModel())))
 }
