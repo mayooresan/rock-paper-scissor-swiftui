@@ -18,7 +18,6 @@ struct ResultView: View {
         Text(gameViewModel.gameResult?.rawValue ?? "no value").font(.custom("Silkscreen-Bold", size: 30))
             .padding(.top, 88)
         
-        Text(String(gameViewModel.stats.playerWins))
         
         HStack {
             VStack {
